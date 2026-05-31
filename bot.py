@@ -62,19 +62,20 @@ def add_balance(uid, amount):
     db.commit()
 
 # ---------------- READY ----------------
-
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user}")
 
     try:
-        guild = discord.Object(id=GUILD_ID)
-        bot.tree.copy_global_to(guild=guild)
+        guild = discord.Object(id=1510218934929068072)
+
+        bot.tree.clear_commands(guild=guild)
+
         synced = await bot.tree.sync(guild=guild)
-        print(f"✅ Synced {len(synced)} commands")
+
+        print(f"✅ Synced {len(synced)} commands to guild")
     except Exception as e:
         print(f"❌ Sync error: {e}")
-
 # ---------------- COMMANDS ----------------
 
 @bot.tree.command(name="balance", description="Check balance")
