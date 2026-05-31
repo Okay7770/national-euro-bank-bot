@@ -67,13 +67,8 @@ async def on_ready():
     print(f"Logged in as {bot.user}")
 
     try:
-        guild = discord.Object(id=1510218934929068072)
-
-        bot.tree.clear_commands(guild=guild)
-
-        synced = await bot.tree.sync(guild=guild)
-
-        print(f"✅ Synced {len(synced)} commands to guild")
+        synced = await bot.tree.sync()
+        print(f"✅ Synced {len(synced)} global commands")
     except Exception as e:
         print(f"❌ Sync error: {e}")
 # ---------------- COMMANDS ----------------
